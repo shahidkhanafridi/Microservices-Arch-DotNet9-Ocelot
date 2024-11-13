@@ -1,0 +1,10 @@
+@MSA.Blog_HostAddress = https://localhost:7201
+
+GET {{MSA.Blog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{MSA.Blog_HostAddress}}/api/posts
+
+###
