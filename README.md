@@ -1,9 +1,11 @@
 # Microservices-Arch-DotNet9-Ocelot
 Implementation of the Microservices Architecture with API Gateway using .NET 9 and Ocelot
 
+## Postman Collection
+The file named "MSA-DotNet9-Ocelot.postman_collection.json" included all the necessary endpoint calls to Gateway as well as direct APIs
 
 ## Below are Some Dummy Users you can try:
-private readonly List<User> _users =
+```csharp
 [
     new User("admin", "admin", "Admin", ["users.read", "users.write", "posts.read", "posts.write"]),
     new User("user", "user", "User", null),
@@ -14,3 +16,4 @@ private readonly List<User> _users =
     new User("postReader", "postReader", "Reader", ["posts.read"]),
     new User("postModerator", "postModerator", "Moderator", ["posts.read", "posts.write"])
 ];
+```
