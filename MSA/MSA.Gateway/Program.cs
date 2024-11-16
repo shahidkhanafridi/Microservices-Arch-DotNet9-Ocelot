@@ -1,6 +1,7 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Cache.CacheManager;
 using Ocelot.Middleware;
+using JwtConfigs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddOcelot(builder.Configuration)
     {
         x.WithDictionaryHandle();
     });
+
+builder.Services.AddJwtAuthentications();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -25,6 +28,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

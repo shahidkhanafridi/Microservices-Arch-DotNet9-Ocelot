@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "e6a669f3-f25a-4ae0-a357-951c765b8b37",
+		"name": "MSA-DotNet9-Ocelot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6372603"
+	},
+	"item": [
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Blog/Posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/gateway/blog/posts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"blog",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog/Posts by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/gateway/blog/posts/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"blog",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog/Post Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Test Value\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/gateway/blog/posts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"blog",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog/Post Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Updated walue\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/gateway/blog/posts/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"blog",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog/Posts Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/gateway/blog/posts/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"blog",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserMgmt/Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW5pc3RyYXRvciIsInNjb3BlIjoiYmxvZ3Bvc3RzLnJlYWQiLCJleHAiOjE3MzE2ODE1OTgsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMDEifQ.ibfO0Kgz-GsJtp--JX3dFwCK9gZDw2zHXSRUqBgw6F0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/gateway/UserMgmt/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"UserMgmt",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"\r",
+									"console.log(\"data\", data);\r",
+									"\r",
+									"pm.environment.set(\"jwtToken\", data.token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"postReader\",\r\n    \"password\": \"postReader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/gateway/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7200/gateway/UserMgmt/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"UserMgmt",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with no Scopes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user\",\r\n    \"password\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7200/gateway/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7200",
+							"path": [
+								"gateway",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7201/api/posts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7201/api/posts/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts Insert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Inserted Value\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7201/api/posts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Updated Value\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7201/api/posts/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7201/api/posts/0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"posts",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserMgmt",
+			"item": [
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7202/api/Users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7202",
+							"path": [
+								"api",
+								"Users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JwtAuth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7201/api/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7201",
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -4,57 +4,9 @@
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/gateway/blog/posts",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/api/posts",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7201
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/api/posts/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7201
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/blog/posts",
+      "UpstreamPathTemplate": "/gateway/login",
       "UpstreamHttpMethod": [ "POST" ],
-      "DownstreamPathTemplate": "/api/posts",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7201
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
-      "UpstreamHttpMethod": [ "PUT" ],
-      "DownstreamPathTemplate": "/api/posts/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7201
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
-      "UpstreamHttpMethod": [ "DELETE" ],
-      "DownstreamPathTemplate": "/api/posts/{id}",
+      "DownstreamPathTemplate": "/api/login",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -73,7 +25,91 @@
           "Host": "localhost",
           "Port": 7202
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "users.read" ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/blog/posts",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/posts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "posts.read" ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/posts/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "posts.read" ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/blog/posts",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/posts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "posts.read", "posts.write" ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "DownstreamPathTemplate": "/api/posts/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "posts.read", "posts.write" ]
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/blog/posts/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "DownstreamPathTemplate": "/api/posts/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "posts.read" ]
+      }
     }
   ]
 }
